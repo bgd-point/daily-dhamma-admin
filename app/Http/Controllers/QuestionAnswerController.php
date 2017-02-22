@@ -57,6 +57,8 @@ class QuestionAnswerController extends Controller
 
         $database->getReference('/question-answer')->push($question_answer);
 
+        session(['notify' => 'add article success']);
+
         return redirect()->back();
     }
 
@@ -109,6 +111,8 @@ class QuestionAnswerController extends Controller
 
         $database->getReference('/question-answer/'.$id)->set($question_answer);
 
+        session(['notify' => 'update article success']);
+
         return redirect('question-answer');
     }
 
@@ -123,6 +127,9 @@ class QuestionAnswerController extends Controller
         $firebase = Firebase::fromServiceAccount(storage_path().'/google-service-account.json');
         $database = $firebase->getDatabase();
         $database->getReference('/question-answer/'.$id)->remove();
+
+        session(['notify' => 'delete article success']);
+
         return redirect('question-answer');
     }
 }

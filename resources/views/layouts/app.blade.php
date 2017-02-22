@@ -18,8 +18,13 @@
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
+        <!-- Datatables -->
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css">
+
+        <!-- Alertify -->
+        <link rel="stylesheet" href="{{ asset('js/alertifyjs/css/alertify.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('js/alertifyjs/css/themes/bootstrap.min.css') }}">
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -108,12 +113,23 @@
         <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
 
+        <!-- Alertify -->
+        <script src="{{ asset('js/alertifyjs/alertify.min.js') }}"></script>
+
+
         @yield('script')
 
         <script>
             window.Laravel = {!! json_encode([
                 'csrfToken' => csrf_token(),
             ]) !!};
+        </script>
+
+        <script>
+            @if(session()->has('notify'))
+            alertify.success('{{ session('notify') }}');
+            <?php session()->forget('notify'); ?>
+            @endif
         </script>
     </body>
 </html>

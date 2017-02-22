@@ -10,11 +10,11 @@
 
             <table id="question-answer-table" class="display" cellspacing="0" width="100%">
                 <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Question</th>
-                    <th>Answer</th>
-                </tr>
+                    <tr>
+                        <th>Title</th>
+                        <th>Question</th>
+                        <th>Answer</th>
+                    </tr>
                 </thead>
                 <tbody>
                 @foreach($list_question_answer as $key => $question_answer)
