@@ -13,7 +13,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // support MySQL under v5.7.7
+        Schema::defaultStringLength(191);
     }
 
     /**
