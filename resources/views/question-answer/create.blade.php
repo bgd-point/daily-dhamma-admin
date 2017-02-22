@@ -16,13 +16,17 @@
                     <input type="text" name="title" class="form-control" id="title" placeholder="Title">
                 </div>
 
+                <hr>
+
                 <div class="form-group">
-                    <label for="title">Question</label>
+                    <h3>Question</h3>
                     <textarea name="question" id="question"></textarea>
                 </div>
 
+                <hr>
+
                 <div class="form-group">
-                    <label for="title">Answer</label>
+                    <h3>Answer</h3>
                     <textarea name="answer" id="answer"></textarea>
                 </div>
 
