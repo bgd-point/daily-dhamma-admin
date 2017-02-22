@@ -1,0 +1,6 @@
+.idea/
+.env
+vendor/
+storage/*.key
+storage/google-service-account.json
+node_modules/
