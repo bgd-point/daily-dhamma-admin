@@ -53,7 +53,7 @@
                     <form action="{{ route('login') }}" method="post" class="navbar-form navbar-right">
                         {{ csrf_field() }}
                         <div class="form-group">
-                            <input type="text" name="namegs" placeholder="Username" class="form-control">
+                            <input type="text" name="name" placeholder="Username" class="form-control">
                         </div>
                         <div class="form-group">
                             <input type="password" name="password" placeholder="Password" class="form-control">
