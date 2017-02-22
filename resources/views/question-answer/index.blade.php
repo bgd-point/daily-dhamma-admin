@@ -17,6 +17,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                @if($list_question_answer)
                 @foreach($list_question_answer as $key => $question_answer)
                     <tr onclick="location.href='{{ url('question-answer/' . $key . '/edit') }}'" class="onclick-link">
                         <td>{{ $question_answer['title'] }}</td>
@@ -24,6 +25,7 @@
                         <td>{{ str_limit(strip_tags($question_answer['answer']), 100) }}</td>
                     </tr>
                 @endforeach
+                @endif
                 </tbody>
             </table>
         </div>
