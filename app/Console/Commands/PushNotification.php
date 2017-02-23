@@ -12,7 +12,7 @@ class PushNotification extends Command
      *
      * @var string
      */
-    protected $signature = 'push-notification:publish {message}';
+    protected $signature = 'push-notification:publish {title} {body}';
 
     /**
      * The console command description.
@@ -53,8 +53,9 @@ class PushNotification extends Command
         // prep the bundle
         $msg = array
         (
-            'title'		=> $this->argument('message'),
-            'sound'		=> 'default',
+            'title'     => $this->argument('title'),
+            'body'      => $this->argument('body'),
+            'sound'     => 'default',
         );
 
         $fields = array
