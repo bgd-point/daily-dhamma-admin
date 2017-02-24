@@ -46,6 +46,12 @@ class QuestionAnswerController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'title' => 'required',
+            'body' => 'required',
+            'answer' => 'required',
+        ]);
+
         $firebase = Firebase::fromServiceAccount(storage_path().'/google-service-account.json');
         $database = $firebase->getDatabase();
 
@@ -100,6 +106,12 @@ class QuestionAnswerController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'title' => 'required',
+            'body' => 'required',
+            'answer' => 'required',
+        ]);
+
         $firebase = Firebase::fromServiceAccount(storage_path().'/google-service-account.json');
         $database = $firebase->getDatabase();
 
