@@ -109,7 +109,7 @@ class QuestionAnswerController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
-            'body' => 'required',
+            'question' => 'required',
             'answer' => 'required',
         ]);
 
