@@ -48,11 +48,12 @@ class QuestionAnswerController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
-            'body' => 'required',
+            'question' => 'required',
             'answer' => 'required',
         ]);
 
         $firebase = Firebase::fromServiceAccount(storage_path().'/google-service-account.json');
+
         $database = $firebase->getDatabase();
 
         $question_answer = [
