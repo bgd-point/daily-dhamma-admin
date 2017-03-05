@@ -136,6 +136,62 @@ class QuestionAnswerController extends Controller
     }
 
     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function editIndex($id)
+    {
+        $firebase = Firebase::fromServiceAccount(storage_path().'/google-service-account.json');
+        $database = $firebase->getDatabase();
+        $reference = $database->getReference('/question-answer/'.$id);
+        $question_answer = $reference->getSnapshot()->getValue();
+
+        return view('question-answer.edit-index')
+            ->with('question_answer', $question_answer)
+            ->with('id', $id);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updateIndex(Request $request, $id)
+    {
+        $this->validate($request, [
+            'id' => 'required',
+        ]);
+
+        $firebase = Firebase::fromServiceAccount(storage_path().'/google-service-account.json');
+        $database = $firebase->getDatabase();
+
+        // check is key exists
+        if($database->getReference('/question-answer/'.$request->get('id'))->getValue() != null) {
+            session(['alert' => 'add article failed, id already in used']);
+            return redirect()->back()->withInput();
+        }
+
+        $reference = $database->getReference('/question-answer/'.$id);
+
+        // get value of question answer
+        $question_answer = $reference->getSnapshot()->getValue();
+
+        // remove old data
+        $database->getReference('/question-answer/'.$request->get('old-id'))->remove();
+
+        // create new data
+        $database->getReference('/question-answer/'.$request->get('id'))->set($question_answer);
+
+        session(['notify' => 'update article success']);
+
+        return redirect('question-answer');
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id

@@ -21,4 +21,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'QuestionAnswerController@index');
+Route::get('/question-answer/{id}/edit-index', 'QuestionAnswerController@editIndex');
+Route::post('/question-answer/{id}/update-index', 'QuestionAnswerController@updateIndex');
 Route::resource('/question-answer', 'QuestionAnswerController');

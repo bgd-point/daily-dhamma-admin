@@ -23,8 +23,8 @@
                 {!! csrf_field() !!}
 
                 <div class="form-group">
-                    <label for="title">Index</label>
-                    {{ $id }}
+                    <h3>Index</h3>
+                    {{ $id }} <a href="{{ url('question-answer/'.$id.'/edit-index') }}" class="btn btn-primary btn-xs">Update Index</a>
                 </div>
 
                 <div class="form-group">
