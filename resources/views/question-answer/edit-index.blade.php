@@ -29,6 +29,8 @@
 
                 <button type="submit" class="btn btn-primary" style="float:left">Update Index</button>
 
+                <hr>
+
                 <div class="form-group">
                     <h3>Title</h3>
                     {{ $question_answer['title'] }}
