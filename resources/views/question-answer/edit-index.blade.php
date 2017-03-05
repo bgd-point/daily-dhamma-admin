@@ -25,9 +25,10 @@
                     <h3>Index</h3>
                     <input type="text" class="form-control" id="id" name="id" value="{{ $id }}">
                     <input type="hidden" class="form-control" id="old-id" name="old-id" value="{{ $id }}">
+                    <br>
+                    <button type="submit" class="btn btn-primary" style="float:left">Update Index</button>
+                    <br><br>
                 </div>
-
-                <button type="submit" class="btn btn-primary" style="float:left">Update Index</button>
 
                 <hr>
 
