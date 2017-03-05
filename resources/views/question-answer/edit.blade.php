@@ -61,6 +61,7 @@
 
 @section('script')
     <script src="{{ asset('js/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('js/ckeditor/plugins.js') }}"></script>
     <script>
         $(document).ready(function() {
             CKEDITOR.replace('question', {
@@ -71,6 +72,9 @@
                     { name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
                     { name: 'others' }
                 ],
+
+                extraPlugins: 'autogrow',
+                autoGrow_onStartup: true,
 
                 // Remove the redundant buttons from toolbar groups defined above.
                 removeButtons: 'Anchor'
@@ -83,6 +87,9 @@
                     { name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
                     { name: 'others' }
                 ],
+
+                extraPlugins: 'autogrow',
+                autoGrow_onStartup: true,
 
                 // Remove the redundant buttons from toolbar groups defined above.
                 removeButtons: 'Anchor'

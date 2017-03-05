@@ -43,7 +43,7 @@
 
                 <div class="form-group">
                     <h3>Question</h3>
-                    <textarea name="question" id="question">{{ old('question') }}</textarea>
+                    <textarea rows="10" cols="80" name="question" id="question">{{ old('question') }}</textarea>
                 </div>
 
                 <hr>
@@ -61,8 +61,10 @@
 
 @section('script')
     <script src="{{ asset('js/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('js/ckeditor/plugins.js') }}"></script>
     <script>
         $(document).ready(function() {
+
             CKEDITOR.replace('question', {
                 toolbarGroups: [
                     { name: 'basicstyles', groups: [ 'basicstyles'] },
@@ -71,6 +73,9 @@
                     { name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
                     { name: 'others' }
                 ],
+
+                extraPlugins: 'autogrow',
+                autoGrow_onStartup: true,
 
                 // Remove the redundant buttons from toolbar groups defined above.
                 removeButtons: 'Anchor'
@@ -83,6 +88,9 @@
                     { name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
                     { name: 'others' }
                 ],
+
+                extraPlugins: 'autogrow',
+                autoGrow_onStartup: true,
 
                 // Remove the redundant buttons from toolbar groups defined above.
                 removeButtons: 'Anchor'
