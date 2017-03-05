@@ -63,8 +63,30 @@
     <script src="{{ asset('js/ckeditor/ckeditor.js') }}"></script>
     <script>
         $(document).ready(function() {
-            CKEDITOR.replace('question');
-            CKEDITOR.replace('answer');
+            CKEDITOR.replace('question', {
+                toolbarGroups: [
+                    { name: 'basicstyles', groups: [ 'basicstyles'] },
+                    { name: 'links' },
+                    { name: 'styles' },
+                    { name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
+                    { name: 'others' }
+                ],
+
+                // Remove the redundant buttons from toolbar groups defined above.
+                removeButtons: 'Anchor'
+            });
+            CKEDITOR.replace('answer', {
+                toolbarGroups: [
+                    { name: 'basicstyles', groups: [ 'basicstyles'] },
+                    { name: 'links' },
+                    { name: 'styles' },
+                    { name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
+                    { name: 'others' }
+                ],
+
+                // Remove the redundant buttons from toolbar groups defined above.
+                removeButtons: 'Anchor'
+            });
         })
     </script>
 @endsection
