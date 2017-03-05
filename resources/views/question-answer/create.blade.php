@@ -8,26 +8,49 @@
 
             <hr>
 
+            @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             <form method="post" action="{{ url('question-answer') }}">
                 {!! csrf_field() !!}
 
                 <div class="form-group">
-                    <label for="title">Title</label>
-                    <input type="text" name="title" class="form-control" id="title" placeholder="Title">
+                    <h3>Index</h3>
+                    <input type="text" name="id" class="form-control" id="id" placeholder="Index">
+                    <pre>
+                        Isi index sesuaikan dengan pdf <br>
+                        ex: PDF 3 no 24 isi dengan 10324 <hr>
+                        XYYZZ <br>
+                        X = 1 (adalah kode dari database tanya jawab) <br>
+                        YY = NOMER YANG ADA DI JUDUL PDF <br>
+                        ZZ = NOMER YANG ADA DI DALAM PDF
+                    </pre>
+                </div>
+
+                <div class="form-group">
+                    <h3>Title</h3>
+                    <input type="text" name="title" class="form-control" id="title" placeholder="Title" value="{{ old('title') }}">
                 </div>
 
                 <hr>
 
                 <div class="form-group">
                     <h3>Question</h3>
-                    <textarea name="question" id="question"></textarea>
+                    <textarea name="question" id="question">{{ old('question') }}</textarea>
                 </div>
 
                 <hr>
 
                 <div class="form-group">
                     <h3>Answer</h3>
-                    <textarea name="answer" id="answer"></textarea>
+                    <textarea name="answer" id="answer">{{ old('answer') }}</textarea>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Submit</button>

@@ -130,6 +130,10 @@
             alertify.success('{{ session('notify') }}');
             <?php session()->forget('notify'); ?>
             @endif
+            @if(session()->has('alert'))
+            alertify.error('{{ session('alert') }}');
+            <?php session()->forget('alert'); ?>
+            @endif
         </script>
     </body>
 </html>

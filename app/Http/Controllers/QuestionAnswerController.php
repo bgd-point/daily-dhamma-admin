@@ -47,6 +47,7 @@ class QuestionAnswerController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
+            'id' => 'required',
             'title' => 'required',
             'question' => 'required',
             'answer' => 'required',
@@ -62,7 +63,12 @@ class QuestionAnswerController extends Controller
             'answer' => $request->get('answer')
         ];
 
-        $database->getReference('/question-answer')->push($question_answer);
+        if($database->getReference('/question-answer/'.$request->get('id'))->getValue() != null) {
+            session(['alert' => 'add article failed, id already in used']);
+            return redirect()->back()->withInput();
+        }
+
+        $database->getReference('/question-answer/'.$request->get('id'))->set($question_answer);
 
         session(['notify' => 'add article success']);
 

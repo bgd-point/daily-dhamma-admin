@@ -8,12 +8,27 @@
 
             <hr>
 
+            @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             <form method="post" action="{{ url('question-answer/'.$id) }}">
                 {{ method_field('PUT') }}
                 {!! csrf_field() !!}
 
                 <div class="form-group">
-                    <label for="title">Title</label>
+                    <label for="title">Index</label>
+                    {{ $id }}
+                </div>
+
+                <div class="form-group">
+                    <h3>Title</h3>
                     <input type="text" name="title" class="form-control" id="title" placeholder="Title" value="{{ $question_answer['title'] }}">
                 </div>
 
