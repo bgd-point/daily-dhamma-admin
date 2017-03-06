@@ -35,8 +35,14 @@ follow this guide : https://firebase.google.com/docs/admin/setup#add_firebase_to
 
 your initial setup is complete.
 
+## TODO
+Upcomming content for this app : (still under discussion)
+- Parrita Suci
+- Naskah Dhamma
+- Dhammapada
+
 ## Feedback
-Please submit an issue for your feedback
+Please submit an issue for your feedback for any improvement
 
 
 
