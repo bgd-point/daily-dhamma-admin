@@ -26,8 +26,11 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->command('daily-dhamma:generate')
+             ->dailyAt('00:00');
+
+        $schedule->command('push-notification:publish')
+            ->dailyAt('06:00');
     }
 
     /**

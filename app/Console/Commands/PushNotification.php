@@ -12,7 +12,7 @@ class PushNotification extends Command
      *
      * @var string
      */
-    protected $signature = 'push-notification:publish {title} {body}';
+    protected $signature = 'push-notification:publish';
 
     /**
      * The console command description.
@@ -50,11 +50,13 @@ class PushNotification extends Command
             array_push($registrationIds, $key);
         }
 
+        $daily_dhamma = $database->getReference('/dhamma-today')->getValue();
+
         // prep the bundle
         $msg = array
         (
-            'title'     => $this->argument('title'),
-            'body'      => $this->argument('body'),
+            'title'     => 'Daily Dhamma',
+            'body'      => $daily_dhamma['title'],
             'sound'     => 'default',
         );
 
@@ -71,6 +73,7 @@ class PushNotification extends Command
             'Content-Type: application/json'
         );
 
+
         $ch = curl_init();
         curl_setopt( $ch,CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send' );
         curl_setopt( $ch,CURLOPT_POST, true );
@@ -80,5 +83,6 @@ class PushNotification extends Command
         curl_setopt( $ch,CURLOPT_POSTFIELDS, json_encode( $fields ) );
         curl_exec( $ch );
         curl_close( $ch );
+
     }
 }
