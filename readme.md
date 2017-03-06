@@ -2,6 +2,14 @@
 
 This is web admin site for daily-dhamma app
 
+For android app repo : [Android](https://github.com/martiendt/daily-dhamma)
+
+Published app : 
+
+<a href='https://play.google.com/store/apps/details?id=red.point.dailydhamma&hl=en&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
+<img width="125px" alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/>
+</a>
+
 this site using : 
 
 - Laravel 5.4 as a framework
@@ -26,5 +34,10 @@ follow this guide : https://firebase.google.com/docs/admin/setup#add_firebase_to
 7. rename your generated authentication file into `google-service-account.json` and then copy your json file into `storage` folder
 
 your initial setup is complete.
+
+## Feedback
+Please submit an issue for your feedback
+
+
 
 
