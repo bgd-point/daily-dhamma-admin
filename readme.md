@@ -1,5 +1,7 @@
 # Daily Dhamma - Web Admin
 
+[![StyleCI](https://styleci.io/repos/82749197/shield?branch=master)](https://styleci.io/repos/82749197)
+
 This is web admin site for daily-dhamma app
 
 For android app repo : [Android](https://github.com/martiendt/daily-dhamma)
