@@ -39,7 +39,7 @@ class DailyDhamma extends Command
     public function handle()
     {
         // API access key from Google API's Console
-        define( 'API_ACCESS_KEY', env('FIREBASE_WEB_API') );
+        define('API_ACCESS_KEY', env('FIREBASE_WEB_API'));
 
         $firebase = Firebase::fromServiceAccount(storage_path().'/google-service-account.json');
         $database = $firebase->getDatabase();
