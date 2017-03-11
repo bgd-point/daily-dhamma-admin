@@ -1,5 +1,7 @@
 # Daily Dhamma - Web Admin
 
+[![Build Status](https://scrutinizer-ci.com/g/martiendt/daily-dhamma-admin/badges/build.png?b=master)](https://scrutinizer-ci.com/g/martiendt/daily-dhamma-admin/build-status/master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/martiendt/daily-dhamma-admin/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/martiendt/daily-dhamma-admin/?branch=master)
 [![StyleCI](https://styleci.io/repos/82749197/shield?branch=master)](https://styleci.io/repos/82749197)
 
 This is web admin site for daily-dhamma app
