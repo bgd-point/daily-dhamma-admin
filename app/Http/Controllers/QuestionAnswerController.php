@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Firebase\V3\Firebase;
+use Illuminate\Http\Request;
 
 class QuestionAnswerController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
@@ -41,16 +40,17 @@ class QuestionAnswerController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $this->validate($request, [
-            'id' => 'required',
-            'title' => 'required',
+            'id'       => 'required',
+            'title'    => 'required',
             'question' => 'required',
-            'answer' => 'required',
+            'answer'   => 'required',
         ]);
 
         $firebase = Firebase::fromServiceAccount(storage_path().'/google-service-account.json');
@@ -58,13 +58,14 @@ class QuestionAnswerController extends Controller
         $database = $firebase->getDatabase();
 
         $question_answer = [
-            'title' => $request->get('title'),
+            'title'    => $request->get('title'),
             'question' => $request->get('question'),
-            'answer' => $request->get('answer')
+            'answer'   => $request->get('answer'),
         ];
 
-        if($database->getReference('/question-answer/'.$request->get('id'))->getValue() != null) {
+        if ($database->getReference('/question-answer/'.$request->get('id'))->getValue() != null) {
             session(['alert' => 'add article failed, id already in used']);
+
             return redirect()->back()->withInput();
         }
 
@@ -78,18 +79,19 @@ class QuestionAnswerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -107,25 +109,26 @@ class QuestionAnswerController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'title' => 'required',
+            'title'    => 'required',
             'question' => 'required',
-            'answer' => 'required',
+            'answer'   => 'required',
         ]);
 
         $firebase = Firebase::fromServiceAccount(storage_path().'/google-service-account.json');
         $database = $firebase->getDatabase();
 
         $question_answer = [
-            'title' => $request->get('title'),
+            'title'    => $request->get('title'),
             'question' => $request->get('question'),
-            'answer' => $request->get('answer')
+            'answer'   => $request->get('answer'),
         ];
 
         $database->getReference('/question-answer/'.$id)->set($question_answer);
@@ -138,7 +141,8 @@ class QuestionAnswerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function editIndex($id)
@@ -156,8 +160,9 @@ class QuestionAnswerController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function updateIndex(Request $request, $id)
@@ -170,8 +175,9 @@ class QuestionAnswerController extends Controller
         $database = $firebase->getDatabase();
 
         // check is key exists
-        if($database->getReference('/question-answer/'.$request->get('id'))->getValue() != null) {
+        if ($database->getReference('/question-answer/'.$request->get('id'))->getValue() != null) {
             session(['alert' => 'add article failed, id already in used']);
+
             return redirect()->back()->withInput();
         }
 
@@ -194,7 +200,8 @@ class QuestionAnswerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
