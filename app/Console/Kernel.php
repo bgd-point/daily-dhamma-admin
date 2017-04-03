@@ -30,7 +30,7 @@ class Kernel extends ConsoleKernel
              ->dailyAt('00:00');
 
         $schedule->command('push-notification:publish')
-            ->dailyAt('06:00');
+            ->hourly();
     }
 
     /**

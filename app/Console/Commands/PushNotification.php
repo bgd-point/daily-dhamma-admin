@@ -44,7 +44,10 @@ class PushNotification extends Command
         // Device token, limit max 1000
         $firebase = Firebase::fromServiceAccount(storage_path().'/google-service-account.json');
         $database = $firebase->getDatabase();
-        $tokens = $database->getReference('/devices/token')->getSnapshot()->getValue();
+
+        $hour = date('H');
+        $tokens = $database->getReference('/devices/token')->orderByChild("notification_time")->equalTo('"' . $hour . ':00"')->getSnapshot()->getValue();
+
         $registrationIds = [];
         foreach ($tokens as $key => $token) {
             array_push($registrationIds, $key);
