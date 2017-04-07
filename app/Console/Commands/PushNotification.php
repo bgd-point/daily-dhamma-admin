@@ -46,7 +46,7 @@ class PushNotification extends Command
         $database = $firebase->getDatabase();
 
         $hour = date('H');
-        $tokens = $database->getReference('/devices/token')->orderByChild("notification_time")->equalTo('"' . $hour . ':00"')->getSnapshot()->getValue();
+        $tokens = $database->getReference('/devices/token')->orderByChild('notification_time')->equalTo('"'.$hour.':00"')->getSnapshot()->getValue();
 
         $registrationIds = [];
         foreach ($tokens as $key => $token) {
