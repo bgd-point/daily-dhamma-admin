@@ -1,5 +1,6 @@
 .idea/
 .env
+.vscode/
 vendor/
 storage/*.key
 storage/google-service-account.json
