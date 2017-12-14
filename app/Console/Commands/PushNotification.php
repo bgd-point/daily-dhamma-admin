@@ -48,18 +48,24 @@ class PushNotification extends Command
         $hour = date('H');
         $tokens = $database->getReference('/devices/token')->orderByChild('notification_time')->equalTo('"'.$hour.':00"')->getSnapshot()->getValue();
 
+        $daily_dhamma = $database->getReference('/dhamma-today')->getValue();
+
         $registrationIds = [];
         foreach ($tokens as $key => $token) {
             array_push($registrationIds, $key);
+            if (count($registrationIds) == 500) {
+                sendMessage($daily_dhamma['title'], $registrationIds);
+                $registrationIds = [];
+            }
         }
+    }
 
-        $daily_dhamma = $database->getReference('/dhamma-today')->getValue();
-
-        // prep the bundle
+    private function sendMessage($title, $registrationIds)
+    {
         $msg =
         [
             'title'     => 'Daily Dhamma',
-            'body'      => $daily_dhamma['title'],
+            'body'      => $title,
             'sound'     => 'default',
         ];
 
