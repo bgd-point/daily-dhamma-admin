@@ -54,12 +54,12 @@ class PushNotificationNow extends Command
         foreach ($tokens as $key => $token) {
             array_push($registrationIds, $key);
             if (count($registrationIds) == 500) {
-                PushNotification::sendNotification($daily_dhamma['title'], $registrationIds);
+                self::sendNotification($daily_dhamma['title'], $registrationIds);
                 $registrationIds = [];
             }
         }
 
-        PushNotification::sendNotification($daily_dhamma['title'], $registrationIds);
+        self::sendNotification($daily_dhamma['title'], $registrationIds);
     }
 
     private static function sendNotification($title, $registrationIds)
