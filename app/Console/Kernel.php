@@ -13,6 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
+        Commands\PushNotificationNow::class,
         Commands\PushNotification::class,
         Commands\Notification::class,
         Commands\DailyDhamma::class,
