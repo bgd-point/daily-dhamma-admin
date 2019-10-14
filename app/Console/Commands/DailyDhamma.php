@@ -44,8 +44,11 @@ class DailyDhamma extends Command
         $firebase = Firebase::fromServiceAccount(storage_path().'/google-service-account.json');
         $database = $firebase->getDatabase();
         $list_question_answer = $database->getReference('/question-answer')->getSnapshot()->getValue();
+        $list_question_answer_en = $database->getReference('/question-answer-en')->getSnapshot()->getValue();
         $array = [10100, 10200, 11600, 11900];
         $dhamma_today = $list_question_answer[$array[rand(0, 3)] + rand(1, 50)];
+        $dhamma_today_en = $list_question_answer_en[$array[rand(0, 3)] + rand(1, 50)];
         $database->getReference('/dhamma-today/')->set($dhamma_today);
+        $database->getReference('/dhamma-today-en/')->set($dhamma_today_en);
     }
 }
